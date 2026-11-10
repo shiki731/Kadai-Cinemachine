@@ -5,6 +5,7 @@ public class PlayerMove : MonoBehaviour
     PlayerInput _input;
 
     private Vector2 moveDirection;
+    private Vector2 cameraMove;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,10 +19,15 @@ public class PlayerMove : MonoBehaviour
         Move();
     }
 
-    private void OnMove(InputValue value)
+    public void OnMove(InputValue value)
     {
         moveDirection = value.Get<Vector2>();
         // Debug.Log($"Input Vector: {moveDirection}");
+    }
+
+    public void OnLook(InputValue value)
+    {
+        cameraMove = value.Get<Vector2>();
     }
 
     private void Move()
@@ -41,5 +47,14 @@ public class PlayerMove : MonoBehaviour
         }
 
         transform.position += move * Time.deltaTime * 5f;
+    }
+
+    private void CameraRotation()
+    {
+               Vector3 camRot = Camera.main.transform.rotation.eulerAngles;//カメラの回転角度
+        Quaternion quaCam = Quaternion.Euler(0, camRot.y, 0);//カメラのYだけをQuaternionに変換
+        float angle = Mathf.Atan2(cameraMove.x, cameraMove.y) * Mathf.Rad2Deg;//進行方向の角度計算
+        Quaternion newQua = Quaternion.Euler(0, angle, 0) * quaCam;//進行角度Quaternion
+        transform.localRotation = newQua;//回転させる
     }
 }
