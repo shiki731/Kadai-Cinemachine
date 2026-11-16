@@ -15,14 +15,11 @@ public class TargetCameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _follow.HorizontalAxis.Value = GetAngle();
+        float dx = target.position.x - player.position.x;
+        float dz = target.position.z - player.position.z;
+        float rad = Mathf.Atan2(dz, dx) ;
+        float angle = rad * Mathf.Rad2Deg;
+        _follow.HorizontalAxis.Value = angle * -1.0f + 90.0f;
     }
 
-    float GetAngle()
-    {
-        float dx = target.position.x - player.position.x;
-        float dy = target.position.y - player.position.y;
-        float rad = Mathf.Atan2(dx, dy);
-        return rad * Mathf.Rad2Deg;
-    }
 }

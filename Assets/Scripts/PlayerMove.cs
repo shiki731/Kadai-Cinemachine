@@ -5,6 +5,7 @@ public class PlayerMove : MonoBehaviour
     PlayerInput _input;
 
     private Vector2 moveDirection;
+    private bool sprint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +23,11 @@ public class PlayerMove : MonoBehaviour
     {
         moveDirection = value.Get<Vector2>();
         // Debug.Log($"Input Vector: {moveDirection}");
+    }
+
+    public void OnSprint(InputValue value)
+    {
+        sprint = value.isPressed;
     }
 
     private void Move()
