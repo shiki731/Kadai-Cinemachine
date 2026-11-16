@@ -5,6 +5,7 @@ public class PlayerMove : MonoBehaviour
     PlayerInput _input;
 
     private Vector2 moveDirection;
+    private bool jump;
     private bool sprint;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,12 +18,18 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         Move();
+        // Jump();
     }
 
     public void OnMove(InputValue value)
     {
         moveDirection = value.Get<Vector2>();
         // Debug.Log($"Input Vector: {moveDirection}");
+    }
+
+    public void OnJump(InputValue value)
+    {
+        jump = value.isPressed;
     }
 
     public void OnSprint(InputValue value)
@@ -32,8 +39,6 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
-
-
         Vector3 move = new Vector3(moveDirection.x, 0, moveDirection.y);
 
         if (moveDirection != Vector2.zero)
@@ -45,8 +50,18 @@ public class PlayerMove : MonoBehaviour
             transform.localRotation = newQua;//‰ñ“]‚³‚¹‚é
             move = Vector3.Scale(transform.forward, new Vector3(1, 0, 1));//xz•½–Ê‚ÌˆÚ“®ƒxƒNƒgƒ‹
         }
+        float speed = !sprint ? 5.0f : 10.0f;
+        transform.position += move * Time.deltaTime * speed;
+    }
 
-        transform.position += move * Time.deltaTime * 5f;
+    private void IsGround()
+    {
+
+    }
+
+    private void Jump()
+    {
+
     }
 
 }
