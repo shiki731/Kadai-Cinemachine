@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class AttackPattern : MonoBehaviour
 {
-    public GameObject wave1;
-    
+    public GameObject wave;
+    public GameObject root;
+
+    public Transform player;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,21 +23,29 @@ public class AttackPattern : MonoBehaviour
     {
         Debug.Log("wave");
 
-        GameObject obj1 = GameObject.Instantiate(wave1);
+        GameObject obj1 = GameObject.Instantiate(wave);
         obj1.transform.position = gameObject.transform.position;
         obj1.transform.rotation = Quaternion.Euler(0,0,0);
 
-        GameObject obj2 = GameObject.Instantiate(wave1);
+        GameObject obj2 = GameObject.Instantiate(wave);
         obj2.transform.position = gameObject.transform.position;
         obj2.transform.rotation = Quaternion.Euler(0, 90, 0);
 
-        GameObject obj3 = GameObject.Instantiate(wave1);
+        GameObject obj3 = GameObject.Instantiate(wave);
         obj3.transform.position = gameObject.transform.position;
         obj3.transform.rotation = Quaternion.Euler(0, 180, 0);
 
-        GameObject obj4 = GameObject.Instantiate(wave1);
+        GameObject obj4 = GameObject.Instantiate(wave);
         obj4.transform.position = gameObject.transform.position;
         obj4.transform.rotation = Quaternion.Euler(0, -90, 0);
 
+    }
+
+    public void Root()
+    {
+        Debug.Log("wave");
+
+        GameObject obj5 = GameObject.Instantiate(root);
+        obj5.transform.position = new Vector3(player.position.x,player.position.y - 10,player.position.z);
     }
 }

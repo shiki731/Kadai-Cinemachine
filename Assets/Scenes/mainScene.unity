@@ -1614,7 +1614,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5026fb62728924993eccb5a3a11e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackPattern
-  wave1: {fileID: 5593436836808996266, guid: fdd36104ab67ae542812e78937dbe847, type: 3}
+  wave: {fileID: 5593436836808996266, guid: fdd36104ab67ae542812e78937dbe847, type: 3}
+  root: {fileID: 2763134680691542338, guid: 5aece7c9d991dac418ebf334257f1112, type: 3}
+  player: {fileID: 810451942}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
