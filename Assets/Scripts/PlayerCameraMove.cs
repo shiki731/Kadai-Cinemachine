@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.SceneView;
+// using static UnityEditor.SceneView;
 
 public class PlayerCameraMove : MonoBehaviour
 {
